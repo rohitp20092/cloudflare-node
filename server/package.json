@@ -4,6 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "install-server": "npm install",
+    "install-client": "npm install --prefix forntend",
+    "install": "npm install concurrently --save & concurrently \"npm run install-server\" \"npm run install-client\"",
     "start": "concurrently \"npm run dev\" \"cd ../front-end && npm start\"",
     "dev": "nodemon -r dotenv/config index.js"
   },
