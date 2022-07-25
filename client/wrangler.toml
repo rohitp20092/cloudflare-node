@@ -1,0 +1,10 @@
+account_id = "78ffaadfca16a9a0dc6122c827e86802"
+name = "cloudfare"
+type = "webpack"
+route = ''
+zone_id = ''
+usage_model = ''
+compatibility_flags = []
+workers_dev = true
+site = {bucket = "./build",entry-point = "workers-site"}
+compatibility_date = "2022-07-24"
