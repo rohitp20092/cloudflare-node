@@ -1,34 +1,39 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Button, Form, Input } from 'antd';
 const CryptoJS = require("crypto-js");
 
 
 
 
 const Home = () => {
-  const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
   const [ipAddress, setApiAddress] = useState("");
-console.log(ipAddress,"ip ip ip ip ip ip ip ip ip ip ip ip ip ip ip ip ip ip")
+  const [form] = Form.useForm();
 
-  const handleForm = async (e) => {
-    e.preventDefault()
+
+
+  const onFinish = async (values) => {
+    console.log('Success:', values);
+    const {email,password,username}=values
     let string = password.replace(/\s+/g, '');
     let hash = CryptoJS.MD5(string).toString();
      
     const data = {email:email,username: username ,password:hash,ipAdd:ipAddress?ipAddress:""};
     const res = await axios.post("http://localhost:8443/user",data);
-        setUsername("")
-        setEmail("")
-        setPassword("")
+    form.resetFields();
     alert("data saved successfully")
   };
+
+  const onFinishFailed = (errorInfo) => {
+    console.log('Failed:', errorInfo);
+  };
+
+  
+ 
 
 
   const getIpAddress = async () => {
     const res = await axios.get("https://geolocation-db.com/json/");
-    console.log(res.data,"datata dat data data dtata")
     setApiAddress(res.data.IPv4);
  };
 
@@ -37,47 +42,48 @@ console.log(ipAddress,"ip ip ip ip ip ip ip ip ip ip ip ip ip ip ip ip ip ip")
   }, []);
 
   return (
-    <form>
-      <div className="abc">
-        <div className="container">
-          <label>
-            <b>Email</b>
-          </label>
-          <input
-            type="text"
-            placeholder="Enter Email"
-            name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <label>
-            <b>username</b>
-          </label>
-          <input
-            type="text"
-            placeholder="Enter Username"
-            name="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
+    <div > 
+    <Form
+      name="basic"
+      labelCol={{ span: 4 }}
+      wrapperCol={{ span: 16 }}
+      initialValues={{ remember: true }}
+      onFinish={onFinish}
+      onFinishFailed={onFinishFailed}
+      autoComplete="off"
+    >
 
-          <label>
-            <b>Password</b>
-          </label>
-          <input
-            type="password"
-            placeholder="Enter Password"
-            name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <button type="submit" onClick={handleForm}>
-            Login
-          </button>
-          <label></label>
-        </div>
-      </div>
-    </form>
+<Form.Item
+        label="Email"
+        name="email"
+        rules={[{ required: true, message: 'Please input your email!' }]}
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
+        label="Username"
+        name="username"
+        rules={[{ required: true, message: 'Please input your username!' }]}
+      >
+        <Input />
+      </Form.Item>
+
+      <Form.Item
+        label="Password"
+        name="password"
+        rules={[{ required: true, message: 'Please input your password!' }]}
+      >
+        <Input.Password />
+      </Form.Item>
+
+      <Form.Item wrapperCol={{ offset: 11, span: 16 }}>
+        <Button type="primary" htmlType="submit">
+          Submit
+        </Button>
+      </Form.Item>
+    </Form>
+    </div>
+
   );
 };
 

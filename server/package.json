@@ -4,10 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "install-server": "npm install",
-    "install-client": "npm install --prefix forntend",
-    "install": "npm install concurrently --save & concurrently \"npm run install-server\" \"npm run install-client\"",
-    "start": "concurrently \"npm run dev\" \"cd ../front-end && npm start\"",
     "dev": "nodemon -r dotenv/config index.js"
   },
   "keywords": [],
@@ -19,6 +15,7 @@
     "express": "^4.18.1",
     "fastify": "^4.3.0",
     "faunadb": "^4.6.0",
+    "request-ip": "^3.3.0",
     "socket.io": "^4.5.1"
   },
   "devDependencies": {

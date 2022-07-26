@@ -7,9 +7,7 @@ import {
   Routes,
   Route
 } from "react-router-dom";
-function App(request) {
-  console.log(request,"rrrrrrrrrrrrr")
- 
+function App() {
 
   return (
 

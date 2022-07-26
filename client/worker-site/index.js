@@ -10,6 +10,7 @@ import { getAssetFromKV, mapRequestToAsset } from '@cloudflare/kv-asset-handler'
 const DEBUG = false
 
 addEventListener('fetch', event => {
+  console.log(event ,"evnet event event event ")
   try {
     event.respondWith(handleEvent(event))
   } catch (e) {
@@ -24,15 +25,9 @@ addEventListener('fetch', event => {
   }
 })
 
-
-
 async function handleEvent(event) {
-  const ip=event.request.headers.RemoteAddress
-  console.log(ip,"ipiipipipipipipipipi")
   const url = new URL(event.request.url)
   let options = {}
-
-
 
   /**
    * You can add custom logic to how we fetch your assets
@@ -51,6 +46,7 @@ async function handleEvent(event) {
 
     // allow headers to be altered
     const response = new Response(page.body, page);
+
     response.headers.set("X-XSS-Protection", "1; mode=block");
     response.headers.set("X-Content-Type-Options", "nosniff");
     response.headers.set("X-Frame-Options", "DENY");
@@ -74,7 +70,6 @@ async function handleEvent(event) {
     return new Response(e.message || e.toString(), { status: 500 })
   }
 }
-
 
 /**
  * Here's one example of how to modify a request to

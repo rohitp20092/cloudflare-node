@@ -1,0 +1,25 @@
+{
+  "name": "cloudflare",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "install":"concurrently \"cd server && npm install\" \"cd client && npm install\"",
+    "start": "concurrently \"cd server && npm run dev\" \"cd client && npm start\"",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build":"concurrently \"cd client && npm run build\" \" \"",
+    "publish":"concurrently \"cd client && wrangler publish\" \"\"",
+     "dev":"concurrently \" cd client && wrangler dev\""
+
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^7.3.0"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.1",
+    "nodemon": "^2.0.19"
+  }
+}

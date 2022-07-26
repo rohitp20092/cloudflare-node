@@ -2,6 +2,7 @@ const express = require("express");
 const http = require("http");
 const cors = require("cors");
 const faunadb = require("faunadb");
+var requestIp = require('request-ip');
 const {
   Collection,
   Get,
@@ -14,22 +15,28 @@ app.use(cors());
 app.use(express.json());
 const PORT = process.env.PORT || 8443;
 
+
+
+
 const client = new faunadb.Client({
   secret: "fnAEsJ1aU1ACS0G1RGt_-W3ZFXTmGNAXwW__77jb",
 });
 
-app.get("/user", async (req, res) => {
-  try {
-    const doc = await client.query(
-      Get(Ref(Collection("users"), req.params.id))
-    );
-    res.send(doc);
-  } catch (error) {
-    console.log(error);
+
+app.get("https://cloudfare.rohitp200929744.workers.dev/", function (req, res){
+  var forwardedIpsStr = req.header('x-forwarded-for');
+  var IP = '';
+
+  if (forwardedIpsStr) {
+     IP = forwardedIps = forwardedIpsStr.split(',')[0];  
   }
+  console.log(IP,"ip address ip address ip address")
 });
 
+
 app.post("/user", async (req, res) => {
+ 
+  
   try {
     const { email, username, password, ipAdd } = req.body;
     const { data } = await client.query(
