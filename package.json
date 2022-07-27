@@ -8,8 +8,7 @@
     "start": "concurrently \"cd server && npm run dev\" \"cd client && npm start\"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build":"concurrently \"cd client && npm run build\" \" \"",
-    "publish":"concurrently \"cd client && wrangler publish\" \"\"",
-     "dev":"concurrently \" cd client && wrangler dev\""
+    "publish":"concurrently \"cd client && wrangler publish\" \"\""
 
   },
   "keywords": [],

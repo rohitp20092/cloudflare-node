@@ -1,8 +1,8 @@
 const express = require("express");
-const http = require("http");
 const cors = require("cors");
 const faunadb = require("faunadb");
-var requestIp = require('request-ip');
+
+
 const {
   Collection,
   Get,
@@ -10,16 +10,18 @@ const {
   Ref,
 } = faunadb.query;
 
+
 const app = express();
 app.use(cors());
 app.use(express.json());
 const PORT = process.env.PORT || 8443;
 
+console.log(process.env.FAUNA_SECRET,"key key key key")
 
 
 
 const client = new faunadb.Client({
-  secret: "fnAEsJ1aU1ACS0G1RGt_-W3ZFXTmGNAXwW__77jb",
+  secret: process.env.FAUNA_SECRET,
 });
 
 
