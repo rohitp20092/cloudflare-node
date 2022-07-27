@@ -6,7 +6,8 @@
 
 
 ### To connect faunadb database 
-// need to create .env file with this FAUNA_SECRET varaible and past you db secret key as value
+// First login fauna
+need to create .env file with this FAUNA_SECRET varaible and past you db secret key as value and 
 
 
 ### To run the server of frontend & backend both
