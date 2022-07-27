@@ -10,7 +10,6 @@ import { getAssetFromKV, mapRequestToAsset } from '@cloudflare/kv-asset-handler'
 const DEBUG = false
 
 addEventListener('fetch', event => {
-  console.log(event ,"evnet event event event ")
   try {
     event.respondWith(handleEvent(event))
   } catch (e) {

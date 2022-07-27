@@ -16,9 +16,6 @@ app.use(cors());
 app.use(express.json());
 const PORT = process.env.PORT || 8443;
 
-console.log(process.env.FAUNA_SECRET,"key key key key")
-
-
 
 const client = new faunadb.Client({
   secret: process.env.FAUNA_SECRET,
@@ -32,7 +29,6 @@ app.get("https://cloudfare.rohitp200929744.workers.dev/", function (req, res){
   if (forwardedIpsStr) {
      IP = forwardedIps = forwardedIpsStr.split(',')[0];  
   }
-  console.log(IP,"ip address ip address ip address")
 });
 
 

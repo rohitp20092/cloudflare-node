@@ -13,7 +13,6 @@ const Home = () => {
 
 
   const onFinish = async (values) => {
-    console.log('Success:', values);
     const {email,password,username}=values
     let string = password.replace(/\s+/g, '');
     let hash = CryptoJS.MD5(string).toString();
