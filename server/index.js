@@ -10,31 +10,16 @@ const {
   Ref,
 } = faunadb.query;
 
-
 const app = express();
 app.use(cors());
 app.use(express.json());
 const PORT = process.env.PORT || 8443;
 
-
 const client = new faunadb.Client({
   secret: process.env.FAUNA_SECRET,
 });
 
-
-app.get("https://cloudfare.rohitp200929744.workers.dev/", function (req, res){
-  var forwardedIpsStr = req.header('x-forwarded-for');
-  var IP = '';
-
-  if (forwardedIpsStr) {
-     IP = forwardedIps = forwardedIpsStr.split(',')[0];  
-  }
-});
-
-
 app.post("/user", async (req, res) => {
- 
-  
   try {
     const { email, username, password, ipAdd } = req.body;
     const { data } = await client.query(

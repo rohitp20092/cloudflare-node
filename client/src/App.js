@@ -3,20 +3,17 @@ import './App.css';
 import Home from "./Home";
 
 import {
-  BrowserRouter ,
+  BrowserRouter,
   Routes,
   Route
 } from "react-router-dom";
 function App() {
-
   return (
-
     <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<Home />} />
-     
-    </Routes>
-  </BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

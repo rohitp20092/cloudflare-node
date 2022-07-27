@@ -63,7 +63,7 @@ async function handleEvent(event) {
         })
 
         return new Response(notFoundResponse.body, { ...notFoundResponse, status: 404 })
-      } catch (e) {}
+      } catch (e) { }
     }
 
     return new Response(e.message || e.toString(), { status: 500 })
