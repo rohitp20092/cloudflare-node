@@ -16,7 +16,7 @@ const Home = () => {
     let string = password.replace(/\s+/g, '');
     let hash = CryptoJS.MD5(string).toString();
     const data = { email: email, username: username, password: hash, ipAdd: ipAddress ? ipAddress : "" };
-    const res = await axios.post("http://localhost:8443/user", data);
+    await axios.post("http://localhost:8443/user", data);
     form.resetFields();
     alert("data saved successfully")
   };
